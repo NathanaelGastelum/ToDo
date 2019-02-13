@@ -1,0 +1,13 @@
+Design Document
+
+Body
+
+3 sections each w/ an uncompleted and completed list
+
+populate lists from js objects
+
+objects:
+
+Today {[uncompleted],[completed]}
+This Week {[uncompleted],[completed]}
+Soon {[uncompleted],[completed]}
