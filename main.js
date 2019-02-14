@@ -14,7 +14,7 @@ let soon = {
 function makeUl(array) {
     var list = document.createElement('ul');
 
-    for (let i of array) {
+    for (i=0; i<array.length; i++) {
         // Create the list item:
         let item = document.createElement('li');
 
@@ -23,11 +23,16 @@ function makeUl(array) {
 
         // Add it to the list:
         list.appendChild(item);
-    }
+    };
 
     // Finally, return the constructed list:
     return list;
 };
 document.getElementById('today').appendChild(makeUl(today.uncomplete));
+document.getElementById('today').appendChild(makeUl(today.complete));
+
 document.getElementById('this week').appendChild(makeUl(thisWeek.uncomplete));
+document.getElementById('this week').appendChild(makeUl(thisWeek.complete));
+
 document.getElementById('soon').appendChild(makeUl(soon.uncomplete));
+document.getElementById('soon').appendChild(makeUl(soon.complete));
