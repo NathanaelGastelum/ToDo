@@ -11,28 +11,32 @@ let soon = {
     complete: ['Move']
 };
 
-function makeUl(array) {
-    var list = document.createElement('ul');
+// Object.keys(thisWeek).forEach(key => {
+//     console.log(key) // returns the keys in an object
+//     console.log(thisWeek[key])  // returns the appropriate value 
+//  });
 
-    for (i=0; i<array.length; i++) {
-        // Create the list item:
-        let item = document.createElement('li');
+ function makeUl(card) {
+    Object.keys(card).forEach(key => {
+        var list = document.createElement('ul');
+        list.appendChild(document.createTextNode(key));
 
-        // Set its contents:
-        item.appendChild(document.createTextNode(array[i]));
+        for (i=0; i<key.length; i++) {
+            // Create the list item:
+            let item = document.createElement('li');
 
-        // Add it to the list:
-        list.appendChild(item);
-    };
+            // Set its contents:
+            item.appendChild(document.createTextNode(key[i]));
 
-    // Finally, return the constructed list:
-    return list;
-};
-document.getElementById('today').appendChild(makeUl(today.uncomplete));
-document.getElementById('today').appendChild(makeUl(today.complete));
+            // Add it to the list:
+            list.appendChild(item);
+        };
 
-document.getElementById('this week').appendChild(makeUl(thisWeek.uncomplete));
-document.getElementById('this week').appendChild(makeUl(thisWeek.complete));
+        // Finally, return the constructed list:
+        return list;
+    });
+ };
 
-document.getElementById('soon').appendChild(makeUl(soon.uncomplete));
-document.getElementById('soon').appendChild(makeUl(soon.complete));
+document.getElementById('today').appendChild(makeUl(today));
+document.getElementById('this week').appendChild(makeUl(thisWeek));
+document.getElementById('soon').appendChild(makeUl(soon));
