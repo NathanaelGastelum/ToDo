@@ -2,12 +2,19 @@ Design Document
 
 Body
 
-3 sections each w/ an uncompleted and completed list
+3 uncompleted sections: Today, This Week, Soon
 
-populate lists from js objects
+Seperate Completed list
 
-objects:
+1 list object: 
+-incomplete
+-complete
 
-Today {[uncompleted],[completed]}
-This Week {[uncompleted],[completed]}
-Soon {[uncompleted],[completed]}
+4 Components:
+-Today
+-This Week
+-Soon
+-Completed
+
+uncompleted components pull from list.incomplete
+completed components pull from list.complete
