@@ -17,4 +17,4 @@ Seperate Completed list
 -Completed
 
 uncompleted components pull from list.incomplete
-completed components pull from list.complete
+completed components pull from list.today/thisWeek/soon
