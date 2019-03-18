@@ -1,14 +1,15 @@
 let list = {
-    complete: ['Work at a coffee shop', 'Clean up app design', 'Buy plane tickets'],
+    complete: ['Work at a coffee shop', 'Clean up app design', 'Buy plane tickets', 'Get Baked Alaska'],
     today: ['Shower'],
-    thisWeek: [
-        ['Sunday'],
-        ['Monday'],
-        ['Tuesday'],
-        ['Wednesday'],
-        ['Thursday'],
-        ['Friday', 'Baked Alaska', 'Play Soma'],
-        ['Saturday','Bike ride in the morning']],
+    thisWeek: {
+        Sunday: [],
+        Monday: [],
+        Tuesday: [],
+        Wednesday: [],
+        Thursday: [],
+        Friday: ['Play Soma'],
+        Saturday: ['Bike ride in the morning']
+    },
     soon:['Get a web dev job', 'Singer 911']
 };
 
@@ -26,10 +27,18 @@ function makeList(array,element) {
     resultElement = document.getElementById(element);
 
     // Set the inner HTML
-    resultElement.innerHTML = listItems;
+    resultElement.innerHTML = listItems; //TODO innerHTML potentially unsecure
 };
 
 makeList(list.today,'today');
-makeList(list.thisWeek,'this week'); //TODO Use the first element of the array to sort the 2D array into subcatagories
+makeList(list.thisWeek.Sunday,'sunday'); 
+makeList(list.thisWeek.Monday,'monday');
+makeList(list.thisWeek.Tuesday,'tuesday');
+makeList(list.thisWeek.Wednesday,'wednesday');
+makeList(list.thisWeek.Thursday,'thursday');
+makeList(list.thisWeek.Friday,'friday');
+makeList(list.thisWeek.Saturday,'saturday');
 makeList(list.soon,'soon');
 makeList(list.complete,'completed');
+
+//TODO Generate the entire nested list from the list object rather than seperate function calls with each object property as the heading
