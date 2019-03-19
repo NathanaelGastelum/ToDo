@@ -30,6 +30,17 @@ function makeList(array,element) {
     resultElement.innerHTML = listItems; //TODO innerHTML potentially unsecure
 };
 
+document.getElementById('add').addEventListener('click', function() {
+    let value = document.getElementById('item').value;
+    if (value) addItem(value);
+});
+
+function addItem(text) {
+    list.today.push(text);
+    console.log(list.today);
+    makeList(list.today,'today');
+}
+
 makeList(list.today,'today');
 makeList(list.thisWeek.Sunday,'sunday'); 
 makeList(list.thisWeek.Monday,'monday');
