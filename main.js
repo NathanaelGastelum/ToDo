@@ -35,6 +35,12 @@ document.getElementById('add').addEventListener('click', function() {
     if (value) addItem(value);
 });
 
+//TODO Add "Enter" key event listener
+// document.getElementById('add').addEventListener('keydown', function() {
+//     let value = document.getElementById('item').value;
+//     if (value) addItem(value);
+// });
+
 function addItem(text) {
     list.today.push(text);
     console.log(list.today);
