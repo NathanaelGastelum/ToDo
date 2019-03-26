@@ -30,21 +30,24 @@ function makeList(array,element) {
     resultElement.innerHTML = listItems; //TODO innerHTML potentially unsecure
 };
 
-document.getElementById('add').addEventListener('click', function() {
-    let value = document.getElementById('item').value;
+document.getElementById('input').addEventListener('keydown', function (e) {
+    var value = this.value;
+    if ((e.key === 'Enter' || e.key === 'NumpadEnter') && value) {
+      addItem(value);
+    }
+  });
+
+document.getElementById('addbutton').addEventListener('click', function() {
+    let value = document.getElementById('input').value;
     if (value) addItem(value);
 });
 
-//TODO Add "Enter" key event listener
-// document.getElementById('add').addEventListener('keydown', function() {
-//     let value = document.getElementById('item').value;
-//     if (value) addItem(value);
-// });
+function addItem(listItem) {
+    list.today.push(listItem);
 
-function addItem(text) {
-    list.today.push(text);
-    console.log(list.today);
-    makeList(list.today,'today');
+    document.getElementById('input').value = '';
+    makeList(list.today,'today'); //TODO allow user to choose the list
+
 }
 
 makeList(list.today,'today');
