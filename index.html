@@ -6,10 +6,26 @@
     <title>Vanilla ToDo List</title>
 </head>
 <body>
+    <input id="input" type="text" placeholder="Enter an activity...">
+    <select id="listSelect" required="true">
+        <option value="">Select List</option>
+        <option value="today">Today</option>
+        <optgroup label="This Week">
+            <option value="sunday">Sunday</option>
+            <option value="monday">Monday</option>
+            <option value="tuesday">Tuesday</option>
+            <option value="wednesday">Wednesday</option>
+            <option value="thursday">Thursday</option>
+            <option value="friday">Friday</option>
+            <option value="saturday">Saturday</option>
+        </optgroup>
+        <option value="soon">Soon</option>
+        <option value="completed">Completed</option>
+    </select>
+    <button id="addbutton">Add</button>
+
     <h1>Today</h1>
         <ul id="today"></ul>
-        <input id="input" type="text" placeholder="Enter an activity...">
-        <button id="addbutton">Add</button>
     <h1>This Week</h1>
         <ul style="list-style-type: none">
             <li><h2>Sunday</h2></li>

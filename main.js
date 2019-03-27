@@ -1,14 +1,14 @@
 let list = {
-    complete: ['Work at a coffee shop', 'Clean up app design', 'Buy plane tickets', 'Get Baked Alaska'],
+    completed: ['Cuddle','Work at a coffee shop', 'Clean up app design', 'Buy plane tickets', 'Get Baked Alaska'],
     today: ['Shower'],
     thisWeek: {
-        Sunday: [],
-        Monday: [],
-        Tuesday: [],
-        Wednesday: [],
-        Thursday: [],
-        Friday: ['Play Soma'],
-        Saturday: ['Bike ride in the morning']
+        sunday: [],
+        monday: [],
+        tuesday: [],
+        wednesday: [],
+        thursday: [],
+        friday: ['Play Soma'],
+        saturday: ['Bike ride in the morning']
     },
     soon:['Get a web dev job', 'Singer 911']
 };
@@ -31,34 +31,45 @@ function makeList(array,element) {
 };
 
 document.getElementById('input').addEventListener('keydown', function (e) {
-    var value = this.value;
-    if ((e.key === 'Enter' || e.key === 'NumpadEnter') && value) {
-      addItem(value);
+    if ((e.key === 'Enter' || e.key === 'NumpadEnter') && listItem) {
+        let listItem = this.value;
+        let selection = document.getElementById('listSelect').value;
+        if (listItem) addItem(selection, listItem);
     }
   });
 
 document.getElementById('addbutton').addEventListener('click', function() {
-    let value = document.getElementById('input').value;
-    if (value) addItem(value);
+    let listItem = document.getElementById('input').value;
+    let selection = document.getElementById('listSelect').value;
+    if (listItem) addItem(selection, listItem);
 });
 
-function addItem(listItem) {
-    list.today.push(listItem);
+function addItem(selection, listItem) {
+    try {
+        list[selection].push(listItem);
 
-    document.getElementById('input').value = '';
-    makeList(list.today,'today'); //TODO allow user to choose the list
+        document.getElementById('input').value = '';
+        document.getElementById('listSelect').value = '';
+        makeList(list[selection],selection);
+    }
+    catch {
+        list.thisWeek[selection].push(listItem);
 
+        document.getElementById('input').value = '';
+        document.getElementById('listSelect').value = '';
+        makeList(list.thisWeek[selection],selection);
+    }
 }
 
 makeList(list.today,'today');
-makeList(list.thisWeek.Sunday,'sunday'); 
-makeList(list.thisWeek.Monday,'monday');
-makeList(list.thisWeek.Tuesday,'tuesday');
-makeList(list.thisWeek.Wednesday,'wednesday');
-makeList(list.thisWeek.Thursday,'thursday');
-makeList(list.thisWeek.Friday,'friday');
-makeList(list.thisWeek.Saturday,'saturday');
+makeList(list.thisWeek.sunday,'sunday'); 
+makeList(list.thisWeek.monday,'monday');
+makeList(list.thisWeek.tuesday,'tuesday');
+makeList(list.thisWeek.wednesday,'wednesday');
+makeList(list.thisWeek.thursday,'thursday');
+makeList(list.thisWeek.friday,'friday');
+makeList(list.thisWeek.saturday,'saturday');
 makeList(list.soon,'soon');
-makeList(list.complete,'completed');
+makeList(list.completed,'completed');
 
 //TODO Generate the entire nested list from the list object rather than seperate function calls with each object property as the heading
