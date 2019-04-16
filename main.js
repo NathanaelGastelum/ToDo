@@ -1,15 +1,14 @@
 let list = {
     completed: ['Cuddle','Work at a coffee shop', 'Clean up app design', 'Buy plane tickets', 'Get Baked Alaska'],
     today: ['Shower'],
-    // thisWeek: {
-    //     sunday: [],
-    //     monday: [],
-    //     tuesday: [],
-    //     wednesday: [],
-    //     thursday: [],
-    //     friday: ['Play Soma'],
-    //     saturday: ['Bike ride in the morning']
-    // },
+    thisWeek: [],
+        // sunday: [],
+        // monday: [],
+        // tuesday: [],
+        // wednesday: [],
+        // thursday: [],
+        // friday: ['Play Soma'],
+        // saturday: ['Bike ride in the morning']
     soon:['Get a web dev job', 'Singer 911']
 };
 
@@ -20,7 +19,6 @@ let list = {
 
 function makeList (object) {
     for (let value in object){
-        console.log(value);
         let listHeading = document.createElement('ul');
         let heading = document.createTextNode(value);
         listHeading.appendChild(heading);
@@ -33,31 +31,12 @@ function makeList (object) {
             let item = document.createTextNode(el);
             listItem.appendChild(item);
 
-            const targetUl = document.getElementById(listHeading);
-            console.log(targetUl);
-            targetUl.appendChild(listItem);
+            listHeading.appendChild(listItem);
         }
     }
 }
 
 makeList(list);
-
-// function makeList(array,element) {
-//     // Reduce will iterate over all the array items and returns a single value.
-//     listItems = array.reduce((result, item) => {
-//         // Add a string to the result for the current item. This syntax is using template literals.
-//         result += `<li>${item}</li>`;
-        
-//         // Always return the result in the reduce callback, it will be the value or result in the next iteration.
-//         return result;
-//     }, ''); // The '' is an empty string, it is the initial value result.
-
-//     // Get the element from the DOM in which to display the list, this should be an ul or ol element.
-//     resultElement = document.getElementById(element);
-
-//     // Set the inner HTML
-//     resultElement.innerHTML = listItems; //TODO innerHTML potentially unsecure
-// };
 
 document.getElementById('input').addEventListener('keydown', function (e) {
     if ((e.key === 'Enter' || e.key === 'NumpadEnter') && listItem) {
