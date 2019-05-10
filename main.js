@@ -2,19 +2,12 @@ let list = {
     completed: ['Cuddle','Work at a coffee shop', 'Clean up app design', 'Buy plane tickets', 'Get Baked Alaska'],
     today: ['Shower'],
     thisWeek: [],
-        // sunday: [],
-        // monday: [],
-        // tuesday: [],
-        // wednesday: [],
-        // thursday: [],
-        // friday: ['Play Soma'],
-        // saturday: ['Bike ride in the morning']
     soon:['Get a web dev job', 'Singer 911']
 };
 
-//iterate through list
+//Creates ul from list object
 //for every item:
-//  Create html element 'li'
+//  Create html element 'ul'/'li'
 //  append child item
 
 function makeList (object) {
@@ -23,7 +16,7 @@ function makeList (object) {
         let heading = document.createTextNode(value);
         listHeading.appendChild(heading);
 
-        const targetElement = document.getElementById('today');
+        const targetElement = document.getElementById('todo');
         targetElement.appendChild(listHeading);
 
         for (let el of object[value]){
@@ -58,26 +51,14 @@ function addItem(selection, listItem) {
 
         document.getElementById('input').value = '';
         document.getElementById('listSelect').value = '';
-        makeList(list[selection],selection);
+        makeList(list);
     }
+    //TODO refactor to eleminate the need for a try-catch when using the thisWeek list
     catch {
         list.thisWeek[selection].push(listItem);
 
         document.getElementById('input').value = '';
         document.getElementById('listSelect').value = '';
-        makeList(list.thisWeek[selection],selection);
+        makeList(list);
     }
 }
-
-// makeList(list.today,'today');
-// makeList(list.thisWeek.sunday,'sunday'); 
-// makeList(list.thisWeek.monday,'monday');
-// makeList(list.thisWeek.tuesday,'tuesday');
-// makeList(list.thisWeek.wednesday,'wednesday');
-// makeList(list.thisWeek.thursday,'thursday');
-// makeList(list.thisWeek.friday,'friday');
-// makeList(list.thisWeek.saturday,'saturday');
-// makeList(list.soon,'soon');
-// makeList(list.completed,'completed');
-
-//TODO Generate the entire nested list from the list object rather than seperate function calls with each object property as the heading
