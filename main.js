@@ -2,7 +2,13 @@ let list = {
     completed: ['Cuddle','Work at a coffee shop', 'Clean up app design', 'Buy plane tickets', 'Get Baked Alaska'],
     today: ['Shower'],
     thisWeek: [],
-    soon:['Get a web dev job', 'Singer 911']
+    soon:['Get a web dev job', 'Singer 911'],
+
+    removeItem(property, item) {
+        const prop = list[property];
+        const i = prop.indexOf(item);
+        prop.splice(i, 1);
+    }
 };
 
 //Creates ul from list object

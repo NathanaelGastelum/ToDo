@@ -20,7 +20,8 @@ uncompleted components pull from list.incomplete
 completed components pull from list.today/thisWeek/soon
 
 TODO:
--Implement logic to move items between lists
+-Implement remove button
+-Implement movement of items between lists
 -Store data to make it persist after page reloads
 -Improve styling
 -Implement scheduling items in "This Week" to specific days
