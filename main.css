@@ -6,4 +6,5 @@ li {
     font-weight: normal;
     font-size: medium;
     list-style-type: disc;
+    /* TODO make list items indented */
 }

@@ -7,10 +7,13 @@ let list = {
 
 //Creates ul from list object
 //for every item:
+//  Clear div
 //  Create html element 'ul'/'li'
 //  append child item
 
 function makeList (object) {
+    //TODO have makeList accept arguments for getElementById()
+    document.getElementById('todo').innerHTML = '';
     for (let value in object){
         let listHeading = document.createElement('ul');
         let heading = document.createTextNode(value);
@@ -46,19 +49,9 @@ document.getElementById('addbutton').addEventListener('click', function() {
 });
 
 function addItem(selection, listItem) {
-    try {
         list[selection].push(listItem);
 
         document.getElementById('input').value = '';
         document.getElementById('listSelect').value = '';
         makeList(list);
-    }
-    //TODO refactor to eleminate the need for a try-catch when using the thisWeek list
-    catch {
-        list.thisWeek[selection].push(listItem);
-
-        document.getElementById('input').value = '';
-        document.getElementById('listSelect').value = '';
-        makeList(list);
-    }
 }
