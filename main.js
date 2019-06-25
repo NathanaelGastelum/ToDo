@@ -1,15 +1,8 @@
 let list = {
-    completed: ['Cuddle','Work at a coffee shop', 'Clean up app design', 'Buy plane tickets', 'Get Baked Alaska'],
     today: ['Shower'],
     thisWeek: [],
     soon:['Get a web dev job', 'Singer 911'],
-
-    //TODO Implement removeItem without breaking code
-    // removeItem(property, item) {
-    //     const prop = list[property];
-    //     const i = prop.indexOf(item);
-    //     prop.splice(i, 1);
-    // }
+    completed: ['Cuddle','Work at a coffee shop', 'Clean up app design', 'Buy plane tickets', 'Get Baked Alaska']
 };
 
 //Creates ul from list object
@@ -39,6 +32,8 @@ function makeList (object) {
     }
 }
 
+removeItem("today", "Shower");
+
 makeList(list);
 
 document.getElementById('input').addEventListener('keydown', function (e) {
@@ -61,4 +56,10 @@ function addItem(selection, listItem) {
         document.getElementById('input').value = '';
         document.getElementById('listSelect').value = '';
         makeList(list);
+}
+
+function removeItem(property, item) {
+    const prop = list[property];
+    const i = prop.indexOf(item);
+    prop.splice(i, 1);
 }

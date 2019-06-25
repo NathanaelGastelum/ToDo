@@ -1,7 +1,13 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
 ul {
     font-weight: bold;
     font-size: x-large; 
 }
+
 li {
     font-weight: normal;
     font-size: medium;

@@ -2,11 +2,12 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="index.css">
     <title>Vanilla ToDo List</title>
 </head>
 <body>
-    <input id="input" type="text" placeholder="Enter an activity...">
+    <h1>To-Do</h1>
+    <input id="input" type="text" placeholder="New Item">
     <select id="listSelect" required="true">
         <option value="">Select List</option>
         <option value="today">Today</option>
@@ -16,8 +17,7 @@
     </select>
     <button id="addbutton">Add</button>
 
-    <h1>To-Do</h1>
-        <div id="todo"></div>
+    <div class="container" id="todo"></div>
 
     <script src="main.js"></script>
 </body>
