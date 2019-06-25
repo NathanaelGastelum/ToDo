@@ -39,27 +39,6 @@ function makeList (object) {
 
 makeList(list);
 
-document.getElementById('input').addEventListener('keydown', function (e) {
-    if ((e.key === 'Enter' || e.key === 'NumpadEnter') && listItem) {
-        let listItem = this.value;
-        let selection = document.getElementById('listSelect').value;
-        if (listItem) addItem(selection, listItem);
-    }
-  });
-
-document.getElementById('addbutton').addEventListener('click', function() {
-    let listItem = document.getElementById('input').value;
-    let selection = document.getElementById('listSelect').value;
-    if (listItem) addItem(selection, listItem);
-});
-
-document.addEventListener('click', function(event) {
-    if (event.target.matches('.remove')) {
-        const item = event.target.id.split('-');
-        removeItem(item[0], item[1]);
-    }
-}, false);
-
 function addItem(selection, listItem) {
     list[selection].push(listItem);
 
@@ -77,3 +56,16 @@ function removeItem(property, item) {
         makeList(list);
     }
 }
+
+document.addEventListener('click', function(event) {
+    if (event.target.matches('.remove')) {
+        const item = event.target.id.split('-');
+        removeItem(item[0], item[1]);
+    }
+
+    if (event.target.matches('.add')) {
+        let listItem = document.getElementById('input').value;
+        let selection = document.getElementById('listSelect').value;
+        if (listItem) addItem(selection, listItem);
+    }
+}, false);
