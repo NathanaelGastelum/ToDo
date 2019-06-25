@@ -14,25 +14,28 @@ let list = {
 function makeList (object) {
     //TODO have makeList accept arguments for getElementById()
     document.getElementById('todo').innerHTML = '';
-    for (let value in object){
+    for (let prop in object){
         let listHeading = document.createElement('ul');
-        let heading = document.createTextNode(value);
+        let heading = document.createTextNode(prop);
         listHeading.appendChild(heading);
 
         const targetElement = document.getElementById('todo');
         targetElement.appendChild(listHeading);
 
-        for (let el of object[value]){
+        for (let el of object[prop]) {
             let listItem = document.createElement('li');
             let item = document.createTextNode(el);
             listItem.appendChild(item);
+            let button = document.createElement('button');
+            button.id = prop + "-" + el;
+            button.className = 'remove';
+            button.innerText = "X";
+            listItem.appendChild(button);
 
             listHeading.appendChild(listItem);
         }
     }
 }
-
-removeItem("today", "Shower");
 
 makeList(list);
 
@@ -50,16 +53,27 @@ document.getElementById('addbutton').addEventListener('click', function() {
     if (listItem) addItem(selection, listItem);
 });
 
-function addItem(selection, listItem) {
-        list[selection].push(listItem);
+document.addEventListener('click', function(event) {
+    if (event.target.matches('.remove')) {
+        const item = event.target.id.split('-');
+        removeItem(item[0], item[1]);
+    }
+}, false);
 
-        document.getElementById('input').value = '';
-        document.getElementById('listSelect').value = '';
-        makeList(list);
+function addItem(selection, listItem) {
+    list[selection].push(listItem);
+
+    document.getElementById('input').value = '';
+    document.getElementById('listSelect').value = '';
+    makeList(list);
 }
 
 function removeItem(property, item) {
     const prop = list[property];
     const i = prop.indexOf(item);
-    prop.splice(i, 1);
+    if (i > -1) {
+        console.log(i);
+        prop.splice(i, 1);
+        makeList(list);
+    }
 }

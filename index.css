@@ -1,9 +1,13 @@
 .container {
     display: grid;
+    grid-gap: 20px;
     grid-template-columns: 1fr 1fr 1fr;
 }
 
 ul {
+    border: 2px solid rgb(211, 211, 211);
+    border-radius: 15px;
+    padding: 10px 10px 10px 40px;
     font-weight: bold;
     font-size: x-large; 
 }
@@ -13,4 +17,18 @@ li {
     font-size: medium;
     list-style-type: disc;
     /* TODO make list items indented */
+}
+
+li > button {
+    border: none;
+    background: none;
+    color: gray;
+}
+
+li > button:hover {
+    color: black;
+}
+
+li > button:focus {
+    display: none;
 }
