@@ -20,14 +20,14 @@ uncompleted components pull from list.incomplete
 completed components pull from list.today/thisWeek/soon
 
 TODO:
--Add new item input to list cards
 -Implement movement of items between lists
--Store data to make it persist after page reloads
--Improve styling
 -Implement scheduling items in "This Week" to specific days
 -Implement automatic assigning from "This Week" to "Today"
 -Sync task completion between ThisWeek and Today cards
+-Store data to make it persist after page reloads
+-Improve styling
 
 COMPLETED
 -Implement remove button
 -Add styling
+-Add new item input to list cards
