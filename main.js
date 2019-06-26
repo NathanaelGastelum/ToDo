@@ -5,6 +5,8 @@ let list = {
     completed: ['Cuddle','Work at a coffee shop', 'Clean up app design', 'Buy plane tickets', 'Get Baked Alaska']
 };
 
+makeList(list);
+
 //Creates ul from list object
 //for every item:
 //  Clear div
@@ -12,7 +14,7 @@ let list = {
 //  append child item
 
 function makeList (object) {
-    //TODO have makeList accept arguments for getElementById()
+    //TODO add new item input to list cards
     document.getElementById('todo').innerHTML = '';
     for (let prop in object){
         let listHeading = document.createElement('ul');
@@ -34,16 +36,22 @@ function makeList (object) {
 
             listHeading.appendChild(listItem);
         }
+        let input = document.createElement('input');
+        input.id = 'input-' + prop;
+        input.type = 'text';
+        input.placeholder = 'New Item'
+        listHeading.appendChild(input);
+
+        let addButton = document.createElement('button');
+        addButton.id = 'button-' + prop;
+        addButton.className = 'add';
+        addButton.innerText = "+";
+        listHeading.appendChild(addButton);
     }
 }
 
-makeList(list);
-
 function addItem(selection, listItem) {
     list[selection].push(listItem);
-
-    document.getElementById('input').value = '';
-    document.getElementById('listSelect').value = '';
     makeList(list);
 }
 
@@ -51,21 +59,32 @@ function removeItem(property, item) {
     const prop = list[property];
     const i = prop.indexOf(item);
     if (i > -1) {
-        console.log(i);
         prop.splice(i, 1);
         makeList(list);
     }
 }
 
-document.addEventListener('click', function(event) {
+document.addEventListener('click', event => {
     if (event.target.matches('.remove')) {
         const item = event.target.id.split('-');
         removeItem(item[0], item[1]);
     }
 
     if (event.target.matches('.add')) {
-        let listItem = document.getElementById('input').value;
-        let selection = document.getElementById('listSelect').value;
+        const item = event.target.id.split('-');
+        let selection = item[1];
+        let listItem = document.getElementById('input-' + item[1]).value;
         if (listItem) addItem(selection, listItem);
+    }
+}, false);
+
+document.addEventListener('keydown', function (event) {
+    if ((event.key === 'Enter' || event.key === 'NumpadEnter')) {
+        const item = event.target.id.split('-');
+        if (item[0] === 'input') {
+            let selection = item[1];
+            let listItem = document.getElementById('input-' + item[1]).value;
+            if (listItem) addItem(selection, listItem);
+        }
     }
 }, false);
