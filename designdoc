@@ -20,12 +20,15 @@ uncompleted components pull from list.incomplete
 completed components pull from list.today/thisWeek/soon
 
 TODO:
--Implement movement of items between lists
 -Implement scheduling items in "This Week" to specific days
+    -Fix Bugs: Heading not displaying, unable to add/remove items
+-Implement movement of items between lists
 -Implement automatic assigning from "This Week" to "Today"
 -Sync task completion between ThisWeek and Today cards
 -Store data to make it persist after page reloads
--Improve styling
+-Improve styling 
+    -make buttons change cursor to hand
+    -make input start on a new line when card is empty
 
 COMPLETED
 -Implement remove button
