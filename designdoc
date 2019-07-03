@@ -19,11 +19,15 @@ Seperate Completed list
 uncompleted components pull from list.incomplete
 completed components pull from list.today/thisWeek/soon
 
+NOTES:
+Biggest challenge has definitely been deciding/figuring out how to traverse a nested object, 
+should really look further into this to see if there is a better way of achieving that functionality
+
 TODO:
--Implement scheduling items in "This Week" to specific days
-    -Fix Bugs: Heading not displaying, unable to add/remove items
+-Implement item completed button
 -Implement movement of items between lists
 -Implement automatic assigning from "This Week" to "Today"
+-Implement item sorting
 -Sync task completion between ThisWeek and Today cards
 -Store data to make it persist after page reloads
 -Improve styling 
@@ -31,6 +35,8 @@ TODO:
     -make input start on a new line when card is empty
 
 COMPLETED
+-Implement scheduling items in "This Week" to specific days
+-Fixed Bug: Heading not displaying in thisWeek card
 -Fixed Bug: unable to add/remove items from thisWeek card
 -Implement remove button
 -Add styling

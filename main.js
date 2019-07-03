@@ -26,8 +26,10 @@ function makeList (object, target) {
     for (let prop in object){
         let listHeading = document.createElement('ul');
         let heading = document.createTextNode(prop);
-        listHeading.id = prop;
+        let listDiv = document.createElement('div');
+        listDiv.id = prop;
         listHeading.appendChild(heading);
+        listHeading.appendChild(listDiv);
 
         const targetElement = document.getElementById(target);
         targetElement.appendChild(listHeading);
@@ -59,7 +61,7 @@ function makeList (object, target) {
             listHeading.appendChild(addButton);
         }
         catch {
-            makeList(object[prop], listHeading.id);
+            makeList(object[prop], listDiv.id);
         }
     }
 }
