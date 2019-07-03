@@ -31,6 +31,7 @@ TODO:
     -make input start on a new line when card is empty
 
 COMPLETED
+-Fixed Bug: unable to add/remove items from thisWeek card
 -Implement remove button
 -Add styling
 -Add new item input to list cards

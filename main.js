@@ -64,17 +64,33 @@ function makeList (object, target) {
     }
 }
 
-function addItem(selection, listItem) {
-    list[selection].push(listItem);
-    makeList(list, 'todo');
+function addItem(property, listItem) {
+    if (list[property]) {
+        list[property].push(listItem);
+        makeList(list, 'todo');
+    }
+    else if (list.thisWeek[property]) {
+        list.thisWeek[property].push(listItem);
+        makeList(list, 'todo');
+    }
 }
 
 function removeItem(property, item) {
-    const prop = list[property];
-    const i = prop.indexOf(item);
-    if (i > -1) {
-        prop.splice(i, 1);
-        makeList(list, 'todo');
+    if (list[property]) {
+        const prop = list[property];
+        const i = prop.indexOf(item);
+        if (i > -1) {
+            prop.splice(i, 1);
+            makeList(list, 'todo');
+        }
+    }
+    else if (list.thisWeek[property]) {
+        const prop = list.thisWeek[property];
+        const i = prop.indexOf(item);
+        if (i > -1) {
+            prop.splice(i, 1);
+            makeList(list, 'todo');
+        }
     }
 }
 
@@ -92,7 +108,7 @@ document.addEventListener('click', event => {
     }
 }, false);
 
-document.addEventListener('keydown', function (event) {
+document.addEventListener('keydown', event => {
     if ((event.key === 'Enter' || event.key === 'NumpadEnter')) {
         const item = event.target.id.split('-');
         if (item[0] === 'input') {
