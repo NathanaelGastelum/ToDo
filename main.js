@@ -39,11 +39,18 @@ function makeList (object, target) {
                 let listItem = document.createElement('li');
                 let item = document.createTextNode(el);
                 listItem.appendChild(item);
-                let button = document.createElement('button');
-                button.id = prop + "-" + el;
-                button.className = 'remove';
-                button.innerText = "X";
-                listItem.appendChild(button);
+                let removeButton = document.createElement('button');
+                removeButton.id = prop + "-" + el;
+                removeButton.className = 'remove';
+                removeButton.innerText = '\u2715';
+                listItem.appendChild(removeButton);
+                if (prop != 'completed') {
+                    let completeButton = document.createElement('button');
+                    completeButton.id = prop + "-" + el;
+                    completeButton.className = 'complete';
+                    completeButton.innerText = '\u2713';
+                    listItem.appendChild(completeButton);
+                }
     
                 listHeading.appendChild(listItem);
             }
@@ -99,6 +106,12 @@ function removeItem(property, item) {
 document.addEventListener('click', event => {
     if (event.target.matches('.remove')) {
         const item = event.target.id.split('-');
+        removeItem(item[0], item[1]);
+    }
+
+    if (event.target.matches('.complete')) {
+        const item = event.target.id.split('-');
+        addItem('completed', item[1]);
         removeItem(item[0], item[1]);
     }
 

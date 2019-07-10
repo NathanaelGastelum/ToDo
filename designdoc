@@ -24,17 +24,18 @@ Biggest challenge has definitely been deciding/figuring out how to traverse a ne
 should really look further into this to see if there is a better way of achieving that functionality
 
 TODO:
--Implement item completed button
 -Implement movement of items between lists
 -Implement automatic assigning from "This Week" to "Today"
 -Implement item sorting
 -Sync task completion between ThisWeek and Today cards
 -Store data to make it persist after page reloads
+-Implement regression testing
 -Improve styling 
     -make buttons change cursor to hand
-    -make input start on a new line when card is empty
 
 COMPLETED
+-Implement item completed button
+-make input start on a new line when card is empty
 -Implement scheduling items in "This Week" to specific days
 -Fixed Bug: Heading not displaying in thisWeek card
 -Fixed Bug: unable to add/remove items from thisWeek card
