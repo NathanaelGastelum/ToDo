@@ -10,6 +10,17 @@ router.get('/userlist', function(req, res) {
   });
 });
 
+/* POST to adduser */
+router.post('/adduser', (req, res) => {
+  req.db
+  .get('userlist')
+  .insert(req.body, (err, result) => {
+    res.send (
+      (err === null) ? {msg: ''} : {msg: err}
+    );
+  });
+});
+
 /* DELETE to deleteuser. */
 router.delete('/deleteuser/:id', (req, res) => {
   var collection = req.db.get('userlist');
