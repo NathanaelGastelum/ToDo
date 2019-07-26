@@ -24,12 +24,16 @@ Biggest challenge has definitely been deciding/figuring out how to traverse a ne
 should really look further into this to see if there is a better way of achieving that functionality
 
 TODO:
+-Implement MongoDB/Firebase
+    -find out if Router() is actually needed
+-Authentication
 -Implement movement of items between lists
 -Implement automatic assigning from "This Week" to "Today"
+-Enable editing items
 -Implement item sorting
 -Sync task completion between ThisWeek and Today cards
--Store data to make it persist after page reloads
 -Implement regression testing
+-Improve scalability (what happens when there are 1k+ items?)
 -Improve styling 
     -make buttons change cursor to hand
 
