@@ -13,6 +13,7 @@ let list = {
     completed: ['Cuddle','Work at a coffee shop', 'Clean up app design', 'Buy plane tickets', 'Get Baked Alaska']
 };
 
+//TODO pull list object from database
 makeList(list, 'todo');
 
 //Creates ul from list object
@@ -103,6 +104,7 @@ function removeItem(property, item) {
     }
 }
 
+// Event delegation
 document.addEventListener('click', event => {
     if (event.target.matches('.remove')) {
         const item = event.target.id.split('-');

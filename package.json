@@ -1,0 +1,23 @@
+{
+  "name": "todo",
+  "version": "0.0.0",
+  "description": "A To-Do list web app that syncronizes tasks across multiple lists.",
+  "main": "index.js",
+  "scripts": {
+    "watch": "nodemon ./start.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NathanaelGastelum/ToDo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NathanaelGastelum/ToDo/issues"
+  },
+  "homepage": "https://github.com/NathanaelGastelum/ToDo#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
