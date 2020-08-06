@@ -24,5 +24,12 @@ Use componentDidMount function to update
 Create seperate folders for page elements' (Cardview, carditem, editor) js files
 Import page elements to App.js and add them to the render return function
 
+Add functionality (update, new note button button, submit button) to editor and cardview
+Implement card view (list of todo cards)
+Add select and delete note functions to carditem (the individual card components)
+
+Implement selecting and deleting notes in App.js
+Implement displaying selected note
+
 ## Startup Guide
 npm start

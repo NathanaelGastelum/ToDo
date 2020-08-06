@@ -14,6 +14,15 @@ class EditorComponent extends React.Component {
             id: ''
         };
     }   
+
+    componentDidMount = () => {
+        this.setState({
+            text: this.props.selectedNote.body,
+            title: this.props.selectedNote.title,
+            id: this.props.selectedNote.id
+        });
+    }
+
     render() {
 
         const { classes } = this.props;
@@ -28,7 +37,7 @@ class EditorComponent extends React.Component {
     }
     updateBody = async (val) => {
         await this.setState({ text: val })
-        this.updateBody();
+        this.update();
     };
     update = debounce(() => {
         console.log('UPDATE CALLED');

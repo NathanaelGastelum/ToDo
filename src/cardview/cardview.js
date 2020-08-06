@@ -10,10 +10,69 @@ import CarditemComponent from '../carditem/carditem';
 class CardviewComponent extends React.Component {
     constructor() {
         super();
+        this.state = {
+            addingNote: false,
+            title: null
+        };
     }
     render() {
-        return(<div>Cardview reporting in</div>);
+
+        const { notes, classes, selectedNoteIndex } = this.props;
+
+        if(notes) {
+            return(<div className={classes.cardviewContainer}>
+                <Button
+                    onClick={this.newNoteBtnClick}
+                    className={classes.newNoteBtn}>{this.state.addingNote ? 'Cancel' : 'New Note'}</Button>
+                    {
+                        this.state.addingNote ?
+                        <div>
+                            <input type='text'
+                                className={classes.newNoteInput}
+                                placeholder='Title'
+                                onKeyUp={(e) => this.updateTitle(e.target.value)}>
+                            </input>
+                            <Button 
+                                className={classes.newNoteSubmitBtn}
+                                onClick={this.newNote}>Submit</Button>
+                        </div> :
+                        null
+                    }
+                    <List>
+                        {
+                            notes.map((_note, _index) => {
+                                return(
+                                    <div key={_index}>
+                                        <CarditemComponent
+                                            _note={_note}
+                                            _index={_index}
+                                            selectedNoteIndex={selectedNoteIndex}
+                                            selectNote={this.selectNote}
+                                            deleteNote={this.deleteNote}>
+                                        </CarditemComponent>
+                                        <Divider></Divider>
+                                    </div>
+                                )
+                            })
+                        }
+                    </List>
+            </div>);
+        } else {
+            return(<div></div>);
+        }
     }
+
+    newNoteBtnClick = () => {
+        this.setState({ title: null, addingNote: !this.state.addingNote });
+    }
+    updateTitle = (txt) => {
+        this.setState({ title: txt });
+    }
+    newNote = () => {
+        console.log(this.state);
+    }
+    selectNote = (n, i) => this.props.selectNote(n, i);
+    deleteNote = () => console.log('delete note');
 }
 
 export default withStyles(styles)(CardviewComponent);

@@ -19,12 +19,24 @@ class App extends React.Component {
   render() {
     return(
       <div className="app-container">
-        <CardviewComponent></CardviewComponent>
-        <EditorComponent></EditorComponent>
+        <CardviewComponent 
+          selectedNoteIndex={this.state.selectedNoteIndex}
+          notes={this.state.notes}
+          deleteNote={this.deleteNote}
+          selectNote={this.selectNote}
+          newNote={this.newNote}></CardviewComponent>
+        {
+          this.state.selectedNote ?
+          <EditorComponent selectedNote={this.state.selectedNote}
+          selectedNoteIndex={this.state.selectedNoteIndex}
+          notes={this.state.notes}></EditorComponent> :
+          null
+        }
       </div>
     );
   }
 
+  // Retrieves data from firebase
   componentDidMount = () => {
     firebase.firestore().collection('notes').onSnapshot(serverUpdate => {
       const notes = serverUpdate.docs.map(doc => {
@@ -36,6 +48,9 @@ class App extends React.Component {
       this.setState({ notes: notes });
     });
   }
+
+  selectNote = (note, index) => this.setState({ selectedNoteIndex: index, selectedNote: note });
+
 }
 
 export default App;
