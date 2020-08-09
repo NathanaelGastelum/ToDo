@@ -28,8 +28,12 @@ Add functionality (update, new note button button, submit button) to editor and 
 Implement card view (list of todo cards)
 Add select and delete note functions to carditem (the individual card components)
 
-Implement selecting and deleting notes in App.js
-Implement displaying selected note
+Add prototype functions for selecting and deleting notes in App.js
+Implement displaying selected note in editor
+
+Implement updating, adding, and deleting notes in firebase
+
+Add ability to edit note titles
 
 ## Startup Guide
 npm start
