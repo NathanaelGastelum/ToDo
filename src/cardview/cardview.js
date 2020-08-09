@@ -5,7 +5,8 @@ import List from '@material-ui/core/List';
 import { Divider, Button } from '@material-ui/core';
 import CarditemComponent from '../carditem/carditem';
 
-//TODO Change from sidebar to card view
+//TODO: Change from sidebar to card view
+//TODO: Expand selection click hitbox to entire card item
 
 class CardviewComponent extends React.Component {
     constructor() {

@@ -46,7 +46,7 @@ class App extends React.Component {
         data['id'] = doc.id;
         return data;
       });
-      console.log(notes); // TODO remove when not needed
+      console.log(notes); //TODO: remove when not needed
       this.setState({ notes: notes });
     });
   }
@@ -77,7 +77,7 @@ class App extends React.Component {
     this.setState({ selectedNote: this.state.notes[newNoteIndex], selectedNoteIndex: newNoteIndex });
   } 
 
-  //TODO fix note deselecting when an unselected not is deleted
+  //TODO: fix note deselecting when an unselected not is deleted
   deleteNote = async (note) => {
     const noteIndex = this.state.notes.indexOf(note);
     await this.setState({ notes: this.state.notes.filter(_note => _note !== note) });
