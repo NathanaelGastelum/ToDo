@@ -77,16 +77,20 @@ class App extends React.Component {
     this.setState({ selectedNote: this.state.notes[newNoteIndex], selectedNoteIndex: newNoteIndex });
   } 
 
-  //TODO: fix note deselecting when an unselected not is deleted
   deleteNote = async (note) => {
-    const noteIndex = this.state.notes.indexOf(note);
+    const deletedNoteIndex = this.state.notes.indexOf(note);
     await this.setState({ notes: this.state.notes.filter(_note => _note !== note) });
-    if(this.state.selectedNoteIndex === noteIndex) {
+
+    if(this.state.selectedNoteIndex === deletedNoteIndex) {
       this.setState({ selectedNoteIndex: null, selectedNote: null });
     } else {
-      this.state.notes.length > 1 ?
-      this.selectNote(this.state.notes[this.state.selectedNoteIndex - 1], this.state.selectedNoteIndex - 1) :
-      this.setState({ selectedNoteIndex: null, selectedNote: null });
+      if(this.state.notes.length > 0) {
+        this.state.selectedNoteIndex < deletedNoteIndex ?
+        this.selectNote(this.state.notes[this.state.selectedNoteIndex], this.state.selectedNoteIndex) :
+          this.selectNote(this.state.notes[this.state.selectedNoteIndex - 1], this.state.selectedNoteIndex - 1);
+      } else {
+        this.setState({ selectedNoteIndex: null, selectedNote: null });
+      }
     }
 
     firebase.firestore().collection('notes').doc(note.id).delete();
