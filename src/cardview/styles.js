@@ -28,13 +28,13 @@ const styles = theme => ({
         backgroundColor: '#88a2ce'
       }
     },
-    sidebarContainer: {
+    cardviewContainer: {
       marginTop: '0px',
       width: '300px',
       height: '100%',
       boxSizing: 'border-box',
       float: 'left',
-      overflowY: 'scroll',
+      overflowY: 'auto',
       overflowX: 'hidden'
     },
     newNoteInput: {

@@ -23,7 +23,7 @@ html, body {
 .ql-container {
   box-sizing: border-box;
   height: calc(100% - 42px);
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 .ql-editor {
   cursor: text;

@@ -37,7 +37,6 @@ class EditorComponent extends React.Component {
 
         const { classes } = this.props;
 
-        //TODO: fix editIcon appearing in the wrong place
         return(
         <div className={classes.editorContainer}>
             <BorderColorIcon className={classes.editIcon}></BorderColorIcon> 
