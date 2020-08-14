@@ -13,18 +13,19 @@ const styles = theme => ({
       border: 'none',
       padding: '5px',
       fontSize: '24px',
-      width: 'calc(100% - 300px)',
+      width: 'calc(100% - 325px)',
       backgroundColor: '#29487d',
       color: 'white',
-      paddingLeft: '50px'
+      paddingLeft: '10px'
     },
     editIcon: {
-      position: 'absolute',
       left: '310px',
       top: '12px',
+      backgroundColor: '#29487d',
       color: 'white',
-      width: '10',
-      height: '10'
+      width: '25px',
+      height: '50px',
+      'vertical-align': 'top'
     },
     editorContainer: {
       height: '100%',

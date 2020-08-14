@@ -1,8 +1,9 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './styles';
+import Card from '@material-ui/core/Card';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
+import CardContent from '@material-ui/core/ListItemText';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 class CarditemComponent extends React.Component {
@@ -13,20 +14,21 @@ class CarditemComponent extends React.Component {
 
         return(
             <div key={_index}>
-                <ListItem
-                    className={classes.ListItem}
-                    selected={selectedNoteIndex === _index}
-                    alignItems='flex-start'>
-                        <div 
-                            className={classes.textSection}
-                            onClick={() => this.selectNote(_note, _index)}>
-                                <ListItemText
-                                    primary={_note.title}
-                                    secondary={this.removeHTMLTags(_note.body.substring(0,30)) + '...'}></ListItemText>
-                        </div>
-                        <DeleteIcon onClick={() => this.deleteNote(_note)}
-                            className={classes.deleteIcon}></DeleteIcon>
-                </ListItem>
+                <Card variant='outlined'
+                className={classes.ListItem}
+                selected={selectedNoteIndex === _index}
+                className={classes.textSection}
+                onClick={() => this.selectNote(_note, _index)}>
+                    <CardContent
+                        //TODO: Change card contents to list elements with checkboxes
+                        primary={_note.title}
+                        //TODO: Only show elipses if substring longer than displayed
+                        secondary={this.removeHTMLTags(_note.body.substring(0,30)) + '...'}
+                    ></CardContent>
+
+                    <DeleteIcon onClick={() => this.deleteNote(_note)}
+                    className={classes.deleteIcon}></DeleteIcon>
+                </Card>
             </div>
         );
     }

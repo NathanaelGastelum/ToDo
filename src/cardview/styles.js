@@ -1,21 +1,10 @@
-
 const styles = theme => ({
     root: {
       backgroundColor: theme.palette.background.paper,
       height: 'calc(100% - 35px)',
       position: 'absolute',
       left: '0',
-      width: '300px',
       boxShadow: '0px 0px 2px black'
-    },
-    newChatBtn: {
-      borderRadius: '0px'
-    },
-    unreadMessage: {
-      color: 'red',
-      position: 'absolute',
-      top: '0',
-      right: '5px'
     },
     newNoteBtn: {
       width: '100%',
@@ -30,12 +19,18 @@ const styles = theme => ({
     },
     cardviewContainer: {
       marginTop: '0px',
-      width: '300px',
-      height: '100%',
+      width: '100%',
+      height: 'auto',
       boxSizing: 'border-box',
       float: 'left',
       overflowY: 'auto',
-      overflowX: 'hidden'
+      overflowX: 'hidden',
+
+      '& ul': {
+        display: 'grid',
+        'grid-gap': '20px',
+        'grid-template-columns': '1fr 1fr 1fr',
+      }
     },
     newNoteInput: {
       width: '100%',
@@ -56,4 +51,4 @@ const styles = theme => ({
     }
   });
   
-  export default styles;
+  export default styles;  

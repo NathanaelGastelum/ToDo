@@ -5,6 +5,8 @@ import { withStyles } from '@material-ui/core/styles';
 import styles from './styles';
 import { debounce } from '@material-ui/core';
 
+//TODO: Make editor a lightbox/modal element
+
 class EditorComponent extends React.Component {
     constructor() {
         super();

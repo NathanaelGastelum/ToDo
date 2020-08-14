@@ -1,12 +1,9 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import styles from './styles';
+import styles from './styles.js';
 import List from '@material-ui/core/List';
 import { Divider, Button } from '@material-ui/core';
 import CarditemComponent from '../carditem/carditem';
-
-//TODO: Change from sidebar to card view
-//TODO: Expand selection click hitbox to entire card item
 
 class CardviewComponent extends React.Component {
     constructor() {
@@ -21,43 +18,43 @@ class CardviewComponent extends React.Component {
         const { notes, classes, selectedNoteIndex } = this.props;
 
         if(notes) {
-            return(<div className={classes.cardviewContainer}>
-                <Button
-                    onClick={this.newNoteBtnClick}
-                    className={classes.newNoteBtn}>{this.state.addingNote ? 'Cancel' : 'New Note'}</Button>
-                    {
-                        this.state.addingNote ?
-                        <div>
-                            <input type='text'
-                                className={classes.newNoteInput}
-                                placeholder='Title'
-                                onKeyUp={(e) => this.updateTitle(e.target.value)}>
-                            </input>
-                            <Button 
-                                className={classes.newNoteSubmitBtn}
-                                onClick={this.newNote}>Submit</Button>
-                        </div> :
-                        null
-                    }
-                    <List>
+            return(
+                <div className={classes.cardviewContainer}>
+                    <Button
+                        onClick={this.newNoteBtnClick}
+                        className={classes.newNoteBtn}>{this.state.addingNote ? 'Cancel' : 'New Note'}</Button>
                         {
-                            notes.map((_note, _index) => {
-                                return(
-                                    <div key={_index}>
-                                        <CarditemComponent
-                                            _note={_note}
-                                            _index={_index}
-                                            selectedNoteIndex={selectedNoteIndex}
-                                            selectNote={this.selectNote}
-                                            deleteNote={this.deleteNote}>
-                                        </CarditemComponent>
-                                        <Divider></Divider>
-                                    </div>
-                                )
-                            })
+                            this.state.addingNote ?
+                            <div>
+                                <input type='text'
+                                    className={classes.newNoteInput}
+                                    placeholder='Title'
+                                    onKeyUp={(e) => this.updateTitle(e.target.value)}>
+                                </input>
+                                <Button 
+                                    className={classes.newNoteSubmitBtn}
+                                    onClick={this.newNote}>Submit</Button>
+                            </div> :
+                            null
                         }
-                    </List>
-            </div>);
+                        <List>
+                            {
+                                notes.map((_note, _index) => {
+                                    return(
+                                        <div key={_index}>
+                                            <CarditemComponent
+                                                _note={_note}
+                                                _index={_index}
+                                                selectedNoteIndex={selectedNoteIndex}
+                                                selectNote={this.selectNote}
+                                                deleteNote={this.deleteNote}>
+                                            </CarditemComponent>
+                                        </div>
+                                    )
+                                })
+                            }
+                        </List>
+                </div>);
         } else {
             return(<div></div>);
         }

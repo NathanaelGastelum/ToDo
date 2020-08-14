@@ -24,8 +24,8 @@ class App extends React.Component {
           notes={this.state.notes}
           deleteNote={this.deleteNote}
           selectNote={this.selectNote}
-          newNote={this.newNote}
-          ></CardviewComponent>
+          newNote={this.newNote}>
+        </CardviewComponent>
         {
           this.state.selectedNote ?
           <EditorComponent selectedNote={this.state.selectedNote}
