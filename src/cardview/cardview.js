@@ -14,7 +14,7 @@ class CardviewComponent extends React.Component {
         };
     }
     render() {
-
+        //TODO: change notes to cards in firebase
         const { notes, classes, selectedNoteIndex } = this.props;
 
         if(notes) {
@@ -39,7 +39,7 @@ class CardviewComponent extends React.Component {
                         }
                         <List>
                             {
-                                notes.map((_note, _index) => {
+                                notes.map((_note, _index, listItems) => {
                                     return(
                                         <div key={_index}>
                                             <CarditemComponent

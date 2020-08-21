@@ -35,5 +35,13 @@ Implement updating, adding, and deleting notes in firebase
 
 Add ability to edit note titles
 
+-----------------------------------------Converting note app to ToDo app:-----------------------------------------
+
+Change sidebar to Mui (Material UI) cards
+
+Add listItems array to cards
+Convert carditem to a function instead of a class
+Implement Mui checklist display of list items in carditem
+
 ## Startup Guide
 npm start
