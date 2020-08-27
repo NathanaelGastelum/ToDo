@@ -1,5 +1,4 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
 import styles from './styles';
 import Card from '@material-ui/core/Card';
 import List from '@material-ui/core/List';
@@ -44,7 +43,6 @@ export default function CarditemComponent(props) {
                 <Card variant='outlined'
                 className={classes.listItem}
                 selected={selectedNoteIndex === _index}
-                className={classes.textSection}
                 onClick={() => selectNote(_note, _index)}>
                     <CardContent
                         //TODO: Use virtualized list for better performance

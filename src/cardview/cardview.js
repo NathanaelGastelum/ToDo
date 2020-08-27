@@ -19,7 +19,7 @@ class CardviewComponent extends React.Component {
 
         if(notes) {
             return(
-                <div className={classes.cardviewContainer}>
+                <div>
                     <Button
                         onClick={this.newNoteBtnClick}
                         className={classes.newNoteBtn}>{this.state.addingNote ? 'Cancel' : 'New Note'}</Button>
@@ -37,7 +37,7 @@ class CardviewComponent extends React.Component {
                             </div> :
                             null
                         }
-                        <List>
+                        <List className={classes.cardviewContainer}>
                             {
                                 notes.map((_note, _index, listItems) => {
                                     return(

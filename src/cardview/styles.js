@@ -1,13 +1,11 @@
 const styles = theme => ({
     root: {
-      backgroundColor: theme.palette.background.paper,
-      height: 'calc(100% - 35px)',
-      position: 'absolute',
-      left: '0',
-      boxShadow: '0px 0px 2px black',
+    //   height: 'calc(100% - 35px)',
+    //   position: 'absolute',
+    //   left: '0',
+    //   boxShadow: '0px 0px 2px black',
     },
     newNoteBtn: {
-      'grid-column': 'span 3',
       width: '100%',
       height: '35px',
       borderBottom: '1px solid black',
@@ -19,16 +17,11 @@ const styles = theme => ({
       }
     },
     cardviewContainer: {
-      marginTop: '0px',
-      width: '100%',
-      height: 'auto',
-      boxSizing: 'border-box',
-      float: 'left',
-      overflowY: 'auto',
-      overflowX: 'hidden',
       display: 'grid',
       'grid-gap': '20px',
-      'grid-template-columns': '1fr 1fr 1fr'
+      'grid-template-columns': '1fr 1fr 1fr',
+      padding: '10px',
+      //TODO: Add media query for max width on large screens
     },
     newNoteInput: {
       width: '100%',
