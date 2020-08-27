@@ -19,18 +19,18 @@ class EditorComponent extends React.Component {
 
     componentDidMount = () => {
         this.setState({
-            text: this.props.selectedNote.body,
-            title: this.props.selectedNote.title,
-            id: this.props.selectedNote.id
+            text: this.props.selectedCard.body,
+            title: this.props.selectedCard.title,
+            id: this.props.selectedCard.id
         });
     }
 
     componentDidUpdate = () => {
-        if(this.props.selectedNote.id !== this.state.id) {
+        if(this.props.selectedCard.id !== this.state.id) {
             this.setState({
-                text: this.props.selectedNote.body,
-                title: this.props.selectedNote.title,
-                id: this.props.selectedNote.id
+                text: this.props.selectedCard.body,
+                title: this.props.selectedCard.title,
+                id: this.props.selectedCard.id
             });
         }
     }
@@ -44,7 +44,7 @@ class EditorComponent extends React.Component {
             <BorderColorIcon className={classes.editIcon}></BorderColorIcon> 
             <input
                 className={classes.titleInput}
-                placeholder='Note Title'
+                placeholder='Card Title'
                 value={this.state.title ? this.state.title : ''}
                 onChange={(e) => this.updateTitle(e.target.value)}>
             </input>
@@ -63,7 +63,7 @@ class EditorComponent extends React.Component {
         this.update();
     }
     update = debounce(() => {
-        this.props.noteUpdate(this.state.id, {
+        this.props.cardUpdate(this.state.id, {
             title: this.state.title,
             body: this.state.text
         })

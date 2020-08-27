@@ -9,45 +9,44 @@ class CardviewComponent extends React.Component {
     constructor() {
         super();
         this.state = {
-            addingNote: false,
+            addingCard: false,
             title: null
         };
     }
     render() {
-        //TODO: rename notes to cards in firebase
-        const { notes, classes, selectedNoteIndex } = this.props;
+        const { cards, classes, selectedCardIndex } = this.props;
 
-        if(notes) {
+        if(cards) {
             return(
                 <div>
                     <Button
-                        onClick={this.newNoteBtnClick}
-                        className={classes.newNoteBtn}>{this.state.addingNote ? 'Cancel' : 'New Note'}</Button>
+                        onClick={this.newCardBtnClick}
+                        className={classes.newCardBtn}>{this.state.addingCard ? 'Cancel' : 'New Card'}</Button>
                         {
-                            this.state.addingNote ?
+                            this.state.addingCard ?
                             <div>
                                 <input type='text'
-                                    className={classes.newNoteInput}
+                                    className={classes.newCardInput}
                                     placeholder='Title'
                                     onKeyUp={(e) => this.updateTitle(e.target.value)}>
                                 </input>
                                 <Button 
-                                    className={classes.newNoteSubmitBtn}
-                                    onClick={this.newNote}>Submit</Button>
+                                    className={classes.newCardSubmitBtn}
+                                    onClick={this.newCard}>Submit</Button>
                             </div> :
                             null
                         }
                         <List className={classes.cardviewContainer}>
                             {
-                                notes.map((_note, _index, listItems) => {
+                                cards.map((_card, _index, listItems) => {
                                     return(
                                         <div key={_index}>
                                             <CarditemComponent
-                                                _note={_note}
+                                                _card={_card}
                                                 _index={_index}
-                                                selectedNoteIndex={selectedNoteIndex}
-                                                selectNote={this.selectNote}
-                                                deleteNote={this.deleteNote}>
+                                                selectedCardIndex={selectedCardIndex}
+                                                selectCard={this.selectCard}
+                                                deleteCard={this.deleteCard}>
                                             </CarditemComponent>
                                         </div>
                                     )
@@ -60,18 +59,18 @@ class CardviewComponent extends React.Component {
         }
     }
 
-    newNoteBtnClick = () => {
-        this.setState({ title: null, addingNote: !this.state.addingNote });
+    newCardBtnClick = () => {
+        this.setState({ title: null, addingCard: !this.state.addingCard });
     }
     updateTitle = (txt) => {
         this.setState({ title: txt });
     }
-    newNote = () => {
-        this.props.newNote(this.state.title);
-        this.setState({ title: null, addingNote: false });
+    newCard = () => {
+        this.props.newCard(this.state.title);
+        this.setState({ title: null, addingCard: false });
     }
-    selectNote = (n, i) => this.props.selectNote(n, i);
-    deleteNote = (note) => this.props.deleteNote(note);
+    selectCard = (n, i) => this.props.selectCard(n, i);
+    deleteCard = (card) => this.props.deleteCard(card);
 }
 
 export default withStyles(styles)(CardviewComponent);

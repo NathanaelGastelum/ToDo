@@ -5,7 +5,7 @@ const styles = theme => ({
     //   left: '0',
     //   boxShadow: '0px 0px 2px black',
     },
-    newNoteBtn: {
+    newCardBtn: {
       width: '100%',
       height: '35px',
       borderBottom: '1px solid black',
@@ -23,7 +23,7 @@ const styles = theme => ({
       padding: '10px',
       //TODO: Add media query for max width on large screens
     },
-    newNoteInput: {
+    newCardInput: {
       width: '100%',
       margin: '0px',
       height: '35px',
@@ -34,7 +34,7 @@ const styles = theme => ({
         outline: '2px solid rgba(81, 203, 238, 1)'
       }
     },
-    newNoteSubmitBtn: {
+    newCardSubmitBtn: {
       width: '100%',
       backgroundColor: '#28787c',
       borderRadius: '0px',

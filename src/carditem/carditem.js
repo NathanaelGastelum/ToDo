@@ -11,16 +11,16 @@ import DeleteIcon from '@material-ui/icons/Delete';
 
 export default function CarditemComponent(props) {
     const classes = styles;
-    const { _index, _note, selectedNoteIndex } = props;
+    const { _index, _card, selectedCardIndex } = props;
     const [checked, setChecked] = React.useState([0]);
     
     const removeHTMLTags = (str) => {
         return str.replace(/<[^>]*>?/gm, '');
     }
-    const selectNote = (n, i) => props.selectNote(n, i);
-    const deleteNote = (note) => {
-        if(window.confirm(`Are you sure you want to delete: ${note.title}`)) {
-            props.deleteNote(note);
+    const selectCard = (n, i) => props.selectCard(n, i);
+    const deleteCard = (card) => {
+        if(window.confirm(`Are you sure you want to delete: ${card.title}`)) {
+            props.deleteCard(card);
         }
     }
     //FIXME: app crashes when checkbox is clicked 
@@ -37,19 +37,19 @@ export default function CarditemComponent(props) {
         setChecked(newChecked);
     }
 
-    if(_note.listItems) {
+    if(_card.listItems) {
         return(
             <div key={_index}>
                 <Card variant='outlined'
                 className={classes.listItem}
-                selected={selectedNoteIndex === _index}
-                onClick={() => selectNote(_note, _index)}>
+                selected={selectedCardIndex === _index}
+                onClick={() => selectCard(_card, _index)}>
                     <CardContent
                         //TODO: Use virtualized list for better performance
                         //TODO: Show elipses for overflow
                     >
-                        <List subheader={_note.title} className={classes.carditemContainer}>
-                            {_note.listItems.map((_listItem, _index) => {
+                        <List subheader={_card.title} className={classes.carditemContainer}>
+                            {_card.listItems.map((_listItem, _index) => {
                                 const labelId = `checkbox-list-label-${_index}`;
 
                                 return (
@@ -69,7 +69,7 @@ export default function CarditemComponent(props) {
                         </List>
                     </CardContent>
 
-                    <DeleteIcon onClick={() => deleteNote(_note)}
+                    <DeleteIcon onClick={() => deleteCard(_card)}
                     className={classes.deleteIcon}></DeleteIcon>
                 </Card>
             </div>

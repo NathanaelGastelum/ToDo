@@ -10,9 +10,9 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      selectedNoteIndex: null,
-      selectedNote: null,
-      notes: null
+      selectedCardIndex: null,
+      selectedCard: null,
+      cards: null
     };
   }
 
@@ -20,18 +20,18 @@ class App extends React.Component {
     return(
       <div className="app-container">
         <CardviewComponent 
-          selectedNoteIndex={this.state.selectedNoteIndex}
-          notes={this.state.notes}
-          deleteNote={this.deleteNote}
-          selectNote={this.selectNote}
-          newNote={this.newNote}>
+          selectedCardIndex={this.state.selectedCardIndex}
+          cards={this.state.cards}
+          deleteCard={this.deleteCard}
+          selectCard={this.selectCard}
+          newCard={this.newCard}>
         </CardviewComponent>
         {
-          this.state.selectedNote ?
-          <EditorComponent selectedNote={this.state.selectedNote}
-          selectedNoteIndex={this.state.selectedNoteIndex}
-          notes={this.state.notes}
-          noteUpdate={this.noteUpdate}></EditorComponent> :
+          this.state.selectedCard ?
+          <EditorComponent selectedCard={this.state.selectedCard}
+          selectedCardIndex={this.state.selectedCardIndex}
+          cards={this.state.cards}
+          cardUpdate={this.cardUpdate}></EditorComponent> :
           null
         }
       </div>
@@ -40,59 +40,59 @@ class App extends React.Component {
 
   // Retrieves data from firebase
   componentDidMount = () => {
-    firebase.firestore().collection('notes').onSnapshot(serverUpdate => {
-      const notes = serverUpdate.docs.map(doc => {
+    firebase.firestore().collection('cards').onSnapshot(serverUpdate => {
+      const cards = serverUpdate.docs.map(doc => {
         const data = doc.data();
         data['id'] = doc.id;
         return data;
       });
-      this.setState({ notes: notes });
+      this.setState({ cards: cards });
     });
   }
 
-  selectNote = (note, index) => this.setState({ selectedNoteIndex: index, selectedNote: note });
+  selectCard = (card, index) => this.setState({ selectedCardIndex: index, selectedCard: card });
 
-  noteUpdate = (id, noteObj) => {
-    firebase.firestore().collection('notes').doc(id).update({
-      title: noteObj.title,
-      body: noteObj.body,
+  cardUpdate = (id, cardObj) => {
+    firebase.firestore().collection('cards').doc(id).update({
+      title: cardObj.title,
+      body: cardObj.body,
       timestamp: firebase.firestore.FieldValue.serverTimestamp()
     });
   }
 
-  newNote = async (title) => {
-    const note = {
+  newCard = async (title) => {
+    const card = {
       title: title,
       body: ''
     };
-    const newFromDB = await firebase.firestore().collection('notes').add({
-      title: note.title,
-      body: note.body,
+    const newFromDB = await firebase.firestore().collection('cards').add({
+      title: card.title,
+      body: card.body,
       timestamp: firebase.firestore.FieldValue.serverTimestamp()
     });
     const newID = newFromDB.id;
-    await this.setState({ notes: [...this.state.notes, note] });
-    const newNoteIndex = this.state.notes.indexOf(this.state.notes.filter(_note => _note.id === newID)[0]);
-    this.setState({ selectedNote: this.state.notes[newNoteIndex], selectedNoteIndex: newNoteIndex });
+    await this.setState({ cards: [...this.state.cards, card] });
+    const newCardIndex = this.state.cards.indexOf(this.state.cards.filter(_card => _card.id === newID)[0]);
+    this.setState({ selectedCard: this.state.cards[newCardIndex], selectedCardIndex: newCardIndex });
   } 
 
-  deleteNote = async (note) => {
-    const deletedNoteIndex = this.state.notes.indexOf(note);
-    await this.setState({ notes: this.state.notes.filter(_note => _note !== note) });
+  deleteCard = async (card) => {
+    const deletedCardIndex = this.state.cards.indexOf(card);
+    await this.setState({ cards: this.state.cards.filter(_card => _card !== card) });
 
-    if(this.state.selectedNoteIndex === deletedNoteIndex) {
-      this.setState({ selectedNoteIndex: null, selectedNote: null });
+    if(this.state.selectedCardIndex === deletedCardIndex) {
+      this.setState({ selectedCardIndex: null, selectedCard: null });
     } else {
-      if(this.state.notes.length > 0) {
-        this.state.selectedNoteIndex < deletedNoteIndex ?
-        this.selectNote(this.state.notes[this.state.selectedNoteIndex], this.state.selectedNoteIndex) :
-          this.selectNote(this.state.notes[this.state.selectedNoteIndex - 1], this.state.selectedNoteIndex - 1);
+      if(this.state.cards.length > 0) {
+        this.state.selectedCardIndex < deletedCardIndex ?
+        this.selectCard(this.state.cards[this.state.selectedCardIndex], this.state.selectedCardIndex) :
+          this.selectCard(this.state.cards[this.state.selectedCardIndex - 1], this.state.selectedCardIndex - 1);
       } else {
-        this.setState({ selectedNoteIndex: null, selectedNote: null });
+        this.setState({ selectedCardIndex: null, selectedCard: null });
       }
     }
 
-    firebase.firestore().collection('notes').doc(note.id).delete();
+    firebase.firestore().collection('cards').doc(card.id).delete();
   }
 }
 
