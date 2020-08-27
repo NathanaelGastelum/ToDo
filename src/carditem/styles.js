@@ -1,11 +1,11 @@
 const styles = theme => ({
     listItem: {
       cursor: 'pointer',
-      maxWidth: '85%'
+      maxWidth: '85%',
     },
     textSection: {
       //TODO: Move this functionality to cardview
-      maxWidth: '85%'
+      maxWidth: '85%',
     },  
     deleteIcon: {
       right: '5px',

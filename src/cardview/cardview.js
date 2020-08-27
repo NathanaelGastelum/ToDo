@@ -14,7 +14,7 @@ class CardviewComponent extends React.Component {
         };
     }
     render() {
-        //TODO: change notes to cards in firebase
+        //TODO: rename notes to cards in firebase
         const { notes, classes, selectedNoteIndex } = this.props;
 
         if(notes) {

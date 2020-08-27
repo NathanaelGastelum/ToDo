@@ -47,11 +47,10 @@ export default function CarditemComponent(props) {
                 className={classes.textSection}
                 onClick={() => selectNote(_note, _index)}>
                     <CardContent
-                        //TODO: Fix checklist formatting
                         //TODO: Use virtualized list for better performance
                         //TODO: Show elipses for overflow
                     >
-                        <List subheader={_note.title} className={classes.root}>
+                        <List subheader={_note.title} className={classes.carditemContainer}>
                             {_note.listItems.map((_listItem, _index) => {
                                 const labelId = `checkbox-list-label-${_index}`;
 
@@ -81,5 +80,3 @@ export default function CarditemComponent(props) {
         return(<div></div>);
     }
 }
-
-//export default withStyles(styles)(CarditemComponent);

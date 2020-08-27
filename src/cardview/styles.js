@@ -4,9 +4,10 @@ const styles = theme => ({
       height: 'calc(100% - 35px)',
       position: 'absolute',
       left: '0',
-      boxShadow: '0px 0px 2px black'
+      boxShadow: '0px 0px 2px black',
     },
     newNoteBtn: {
+      'grid-column': 'span 3',
       width: '100%',
       height: '35px',
       borderBottom: '1px solid black',
@@ -25,12 +26,9 @@ const styles = theme => ({
       float: 'left',
       overflowY: 'auto',
       overflowX: 'hidden',
-
-      '& ul': {
-        display: 'grid',
-        'grid-gap': '20px',
-        'grid-template-columns': '1fr 1fr 1fr',
-      }
+      display: 'grid',
+      'grid-gap': '20px',
+      'grid-template-columns': '1fr 1fr 1fr'
     },
     newNoteInput: {
       width: '100%',
