@@ -17,13 +17,12 @@ export default function CarditemComponent(props) {
     const removeHTMLTags = (str) => {
         return str.replace(/<[^>]*>?/gm, '');
     }
-    const selectCard = (n, i) => props.selectCard(n, i);
+    const selectCard = (c, i) => props.selectCard(c, i);
     const deleteCard = (card) => {
         if(window.confirm(`Are you sure you want to delete: ${card.title}`)) {
             props.deleteCard(card);
         }
     }
-    //FIXME: app crashes when checkbox is clicked 
     const handleToggle = (value) => () => {
         const currentIndex = checked.indexOf(value);
         const newChecked = [...checked];

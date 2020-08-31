@@ -69,7 +69,7 @@ class CardviewComponent extends React.Component {
         this.props.newCard(this.state.title);
         this.setState({ title: null, addingCard: false });
     }
-    selectCard = (n, i) => this.props.selectCard(n, i);
+    selectCard = (c, i) => this.props.selectCard(c, i);
     deleteCard = (card) => this.props.deleteCard(card);
 }
 
